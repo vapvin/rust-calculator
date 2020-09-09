@@ -56,7 +56,7 @@ pub fn equal() {
 }
 
 #[wasm_bindgen]
-pub fn chage_sig() {
+pub fn change_sig() {
     unsafe {
         input_val = -(input_val);
     }
