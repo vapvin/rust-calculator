@@ -61,3 +61,87 @@ pub fn chage_sig() {
         input_val = -(input_val);
     }
 }
+
+#[wasm_bindgen]
+pub fn do_operation() {
+    unsafe {
+        if this_method == 1 {
+            total_val = total_val + input_val;
+        }
+        if this_method == 2 {
+            total_val = total_val - input_val;
+        }
+        if this_method == 3 {
+            total_val = total_val.mul_add(input_val, 0.0);
+        }
+        if this_method == 4 {
+            total_val = total_val / input_val;
+        }
+
+        input_val = 0.0;
+        this_method = 0;
+        
+    }
+}
+
+#[wasm_bindgen]
+pub fn add() {
+    unsafe {
+        if this_method != 0 {
+            do_operation();
+        } else {
+            total_val = input_val;
+        } 
+
+        this_method = 1;
+        input_val = 0.0;
+    }
+}
+
+#[wasm_bindgen]
+pub fn sub(){
+    unsafe {
+        if this_method != 0 {
+            do_operation();
+        } else {
+            total_val = input_val;
+        }
+        this_method = 2;
+        input_val = 0.0;
+    }
+}
+
+
+#[wasm_bindgen]
+pub fn mult(){
+    unsafe {
+        if this_method != 0 {
+            do_operation();
+        } else {
+            total_val = input_val;
+        }
+        this_method = 3;
+        input_val = 0.0;
+    }
+}
+
+#[wasm_bindgen]
+pub fn divide(){
+    unsafe {
+        if this_method != 0 {
+            do_operation();
+        } else {
+            total_val = input_val;
+        }
+        this_method = 4;
+        input_val = 0.0;
+    }
+}
+
+#[wasm_bindgen]
+pub fn square() {
+    unsafe {
+        total_val = input_val.sqrt();
+        input_val = total_val;
+    }
+}
